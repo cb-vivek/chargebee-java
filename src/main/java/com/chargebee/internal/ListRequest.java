@@ -1,5 +1,6 @@
 package com.chargebee.internal;
 
+import com.chargebee.AsyncRequestWrap;
 import com.chargebee.RequestWrap;
 import com.chargebee.Environment;
 import com.chargebee.ListResult;
@@ -60,11 +61,11 @@ public class ListRequest<U extends ListRequest> extends RequestBase<U>{
 
     }
 
-    public final AsyncRequest asyncRequest(Environment env) throws IOException, Exception {
+    public final AsyncResult asyncRequest(Environment env) throws IOException, Exception {
         if(env.asyncReqInterceptor() == null) {
             throw new RuntimeException("Async Request interceptor cannot be null");
         }
-        return env.asyncReqInterceptor().handleRequest(env, this);
+        return env.asyncReqInterceptor().handleRequest(new AsyncRequestWrap(env, this, HttpUtil.Method.GET, this.uri));
 
     }
     

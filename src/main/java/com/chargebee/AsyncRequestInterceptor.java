@@ -1,10 +1,8 @@
 package com.chargebee;
 
-import com.chargebee.internal.AsyncRequest;
-import com.chargebee.internal.Request;
-import com.chargebee.internal.RequestBase;
+import com.chargebee.internal.AsyncResult;
 
 public interface AsyncRequestInterceptor {
 
-    public AsyncRequest handleRequest(Environment environment, RequestBase request) throws Exception;
+    public AsyncResult handleRequest(AsyncRequestWrap requestWrap) throws Exception;
 }
