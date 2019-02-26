@@ -60,7 +60,7 @@ public class Environment {
     }
     
     public static void reqInterceptor(RequestInterceptor reqInterceptor) {
-        defaultConfig().reqInterceptor = reqInterceptor;
+	this.asyncReqInterceptor = reqInterceptor;
     }
 
     public static void asyncReqInterceptor(AsyncRequestInterceptor reqInterceptor) {
